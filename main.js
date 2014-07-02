@@ -23,10 +23,10 @@ require([
     gl.useProgram(program.object);
 
     var view = glm.lookAt(vec3(3, 3, 3), vec3(0, 0, 0), vec3(0, 1, 0));
-    gl.uniformMatrix4fv(program.uniform("view"), false, glm.valuePtr(view));
+    program.setUniform('view', view);
 
     var projection = glm.perspective(50, 640 / 480, 0.1, 100);
-    gl.uniformMatrix4fv(program.uniform("projection"), false, glm.valuePtr(projection));
+    program.setUniform('projection', projection);
 
     return program;
   }
@@ -51,7 +51,7 @@ require([
     // Texture
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture.object);
-    gl.uniform1i(this.program.uniform("tex"), 0);
+    this.program.setUniform("text", 0);
   }
 
   function enableZBuffer() {
@@ -82,7 +82,7 @@ require([
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
       var model = glm.rotate(mat4(), degreesRotated, vec3(0, 1, 0));
-      gl.uniformMatrix4fv(this.program.uniform("model"), false, glm.valuePtr(model));
+      this.program.setUniform("model", model);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6 * 2 * 3);
 
@@ -147,9 +147,6 @@ require([
     return this;
   };
 
-  /**
-   *
-   */
   Stage3.prototype.loop = function () {
     render.call(this);
   };
@@ -158,5 +155,7 @@ require([
   var t = start().loadShaders();
   p.then(function (texture) {
     t.loadTriangle(texture).enableZBuffer().loop();
+  }).catch(function(e) {
+    console.log("Couldn't load texture", e)
   });
 });

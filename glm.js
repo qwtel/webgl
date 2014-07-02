@@ -498,6 +498,12 @@ define([
   __exports.mat2 = mat2;
   __exports.mat3 = mat3;
   __exports.mat4 = mat4;
+  __exports.Vec2 = Vec2;
+  __exports.Vec3 = Vec3;
+  __exports.Vec4 = Vec4;
+  __exports.Mat2 = Mat2;
+  __exports.Mat3 = Mat3;
+  __exports.Mat4 = Mat4;
   return __exports;
 
 });
