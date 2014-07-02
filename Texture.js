@@ -1,6 +1,7 @@
 define([
-  'gl'
-], function (/** @type {WebGLRenderingContext} */ gl) {
+  'gl',
+  'Promise'
+], function (/** @type {WebGLRenderingContext} */ gl, Promise) {
   function Texture(image) {
     this.object = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, this.object);

@@ -16,9 +16,9 @@ define([
     gl.linkProgram(this.object);
 
     //detach all the shaders
-    //shaders.forEach(function (shader) {
-      //gl.detachShader(this.object, shader.object);
-    //}, this);
+    shaders.forEach(function (shader) {
+      gl.detachShader(this.object, shader.object);
+    }, this);
 
     if (!gl.getProgramParameter(this.object, gl.LINK_STATUS))
       throw new Error("ERROR IN PROGRAM : " + gl.getProgramInfoLog(this.object));

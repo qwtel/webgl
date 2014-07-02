@@ -1,5 +1,5 @@
 define([
-  "bower_components/gl-matrix/dist/gl-matrix"
+  "glMatrix"
 ], function (glMatrix) {
 
   if (!GLMAT_ARRAY_TYPE) {

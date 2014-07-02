@@ -66,6 +66,7 @@ require([
     var degreesRotated = 0;
 
     var update = function (time, deltaT) {
+      
       //rotate by 1 degree
       degreesRotated += 1;
 
@@ -90,7 +91,7 @@ require([
 
     function renderInner() {
       var now = new Date().getTime();
-      deltaT = time - now;
+      deltaT = now - time;
       time = now;
 
       update(time, deltaT);
